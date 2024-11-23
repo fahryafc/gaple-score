@@ -9,6 +9,7 @@ const TOAST_REMOVE_DELAY = 1000000;
 type ToasterToast = ToastProps & {
   id: string;
   title?: React.ReactNode;
+  variant?: React.ReactNode;
   description?: React.ReactNode;
   action?: ToastActionElement;
   open: boolean; // Menambahkan properti 'open'

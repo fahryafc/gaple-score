@@ -74,11 +74,11 @@ export default function GapleScore() {
   const validateAndStartGame = () => {
     setShowErrors(true);
     if (players.some((player) => !player.name.trim())) {
-      toast({
-        title: "Peringatan",
-        description: "Semua nama pemain harus diisi!",
-        variant: "destructive",
-      });
+      // toast({
+      //   title: "Peringatan",
+      //   description: "Semua nama pemain harus diisi!",
+      //   variant: "destructive",
+      // });
       return;
     }
     setGameStarted(true);
@@ -92,12 +92,12 @@ export default function GapleScore() {
 
   const submitRoundScores = () => {
     if (scores.some((score) => isNaN(score) || score < 0)) {
-      toast({
-        title: "Error",
-        description:
-          "Skor tidak valid. Pastikan semua nilai adalah angka positif.",
-        variant: "destructive",
-      });
+      // toast({
+      //   title: "Error",
+      //   description:
+      //     "Skor tidak valid. Pastikan semua nilai adalah angka positif.",
+      //   variant: "destructive",
+      // });
       return;
     }
 
@@ -113,10 +113,10 @@ export default function GapleScore() {
       const winner = newPlayers.reduce((prev, current) =>
         prev.totalScore < current.totalScore ? prev : current
       );
-      toast({
-        title: "Permainan Selesai!",
-        description: `${loser.name} kalah. ${winner.name} adalah pemenang dengan skor ${winner.totalScore}.`,
-      });
+      // toast({
+      //   title: "Permainan Selesai!",
+      //   description: `${loser.name} kalah. ${winner.name} adalah pemenang dengan skor ${winner.totalScore}.`,
+      // });
       confetti({
         particleCount: 200,
         spread: 160,
