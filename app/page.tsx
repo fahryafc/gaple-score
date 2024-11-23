@@ -122,7 +122,7 @@ export default function GapleScore() {
         spread: 160,
         origin: { y: 0.6 },
       });
-      resetGame();
+      // resetGame();
     } else {
       setScores(Array(4).fill(0));
     }
