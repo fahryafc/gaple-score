@@ -160,7 +160,7 @@ function toast({ ...props }: Toast) {
       ...props,
       id,
       open: true, // Pastikan 'open' diset ke true saat toast ditambahkan
-      onOpenChange: (open: any) => {
+      onOpenChange: (open: boolean) => {
         if (!open) dismiss();
       },
     },
