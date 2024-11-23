@@ -11,6 +11,8 @@ type ToasterToast = ToastProps & {
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: ToastActionElement;
+  open: boolean; // Menambahkan properti 'open'
+  onOpenChange?: (open: boolean) => void; // Add the missing onOpenChange property
 };
 
 const _actionTypes = {
@@ -93,8 +95,7 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action;
 
-      // ! Side effects ! - This could be extracted into a dismissToast() action,
-      // but I'll keep it here for simplicity
+      // Jika toastId tidak diberikan, kita akan mengubah 'open' untuk semua toast
       if (toastId) {
         addToRemoveQueue(toastId);
       } else {
@@ -109,12 +110,13 @@ export const reducer = (state: State, action: Action): State => {
           t.id === toastId || toastId === undefined
             ? {
                 ...t,
-                open: false,
+                open: false, // Menutup toast dengan mengubah 'open' menjadi false
               }
             : t
         ),
       };
     }
+
     case "REMOVE_TOAST":
       if (action.toastId === undefined) {
         return {
@@ -157,8 +159,8 @@ function toast({ ...props }: Toast) {
     toast: {
       ...props,
       id,
-      open: true,
-      onOpenChange: (open) => {
+      open: true, // Pastikan 'open' diset ke true saat toast ditambahkan
+      onOpenChange: (open: any) => {
         if (!open) dismiss();
       },
     },

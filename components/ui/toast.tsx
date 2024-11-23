@@ -1,22 +1,29 @@
 // src/components/ui/toast.tsx
 
-import React, { useState } from "react";
+import React from "react";
 
-type ToastProps = {
+export type ToastActionElement = React.ReactNode; // Atau tipe yang sesuai
+
+export interface ToastProps {
   message: string;
   duration?: number;
-};
+  action?: ToastActionElement;
+}
 
-const Toast: React.FC<ToastProps> = ({ message, duration = 3000 }) => {
-  const [visible, setVisible] = useState(true);
+const Toast: React.FC<ToastProps & { open: boolean }> = ({
+  message,
+  duration = 3000,
+  action,
+  open, // Menambahkan open di sini
+}) => {
+  const [visible, setVisible] = React.useState(open); // Menggunakan open dari props
 
-  // Menyembunyikan toast setelah beberapa detik
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, duration);
-    return () => clearTimeout(timer);
-  }, [duration]);
+    if (open) {
+      const timer = setTimeout(() => setVisible(false), duration);
+      return () => clearTimeout(timer);
+    }
+  }, [open, duration]);
 
   if (!visible) return null;
 
@@ -35,6 +42,7 @@ const Toast: React.FC<ToastProps> = ({ message, duration = 3000 }) => {
       }}
     >
       {message}
+      {action && <div>{action}</div>}
     </div>
   );
 };
