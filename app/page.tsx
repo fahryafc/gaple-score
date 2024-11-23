@@ -61,7 +61,7 @@ export default function GapleScore() {
   const [gameStarted, setGameStarted] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const [scoreHistory, setScoreHistory] = useState<number[][]>([]);
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   useEffect(() => {
     confetti({
@@ -110,9 +110,9 @@ export default function GapleScore() {
 
     const loser = newPlayers.find((player) => player.totalScore >= 200);
     if (loser) {
-      const winner = newPlayers.reduce((prev, current) =>
-        prev.totalScore < current.totalScore ? prev : current
-      );
+      // const winner = newPlayers.reduce((prev, current) =>
+      //   prev.totalScore < current.totalScore ? prev : current
+      // );
       // toast({
       //   title: "Permainan Selesai!",
       //   description: `${loser.name} kalah. ${winner.name} adalah pemenang dengan skor ${winner.totalScore}.`,
