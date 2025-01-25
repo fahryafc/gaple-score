@@ -124,13 +124,13 @@ export default function GapleScore() {
       });
       // resetGame();
     } else {
-      setScores(Array(4).fill(0));
+      setScores(Array(4).fill());
     }
   };
 
   const resetGame = () => {
     setPlayers(presetPlayers.map((p) => ({ ...p, totalScore: 0 })));
-    setScores(Array(4).fill(0));
+    setScores(Array(4).fill());
     setGameStarted(false);
     setShowErrors(false);
     setScoreHistory([]);
