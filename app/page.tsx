@@ -57,7 +57,7 @@ export default function GapleScore() {
   const [players, setPlayers] = useState<Player[]>(
     presetPlayers.map((p) => ({ ...p, totalScore: 0 }))
   );
-  const [scores, setScores] = useState<number[]>(Array(4).fill(0));
+  const [scores, setScores] = useState<number[]>(Array(4).fill());
   const [gameStarted, setGameStarted] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const [scoreHistory, setScoreHistory] = useState<number[][]>([]);
