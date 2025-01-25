@@ -246,7 +246,7 @@ export default function GapleScore() {
                     <div className="flex items-center space-x-2">
                       <Avatar className="h-10 w-10">
                         <AvatarImage src={player.avatar} alt={player.name} />
-                        <AvatarFallback>{player.name.charAt(0)}</AvatarFallback>
+                        <AvatarFallback>{player.name.charAt()}</AvatarFallback>
                       </Avatar>
                       <div>
                         <div className="font-semibold text-purple-800">
